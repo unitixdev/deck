@@ -1,4 +1,9 @@
+import AuthProvider from "@/components/AuthProvider";
+import Header from "@/components/Header";
 import type { Metadata } from "next";
+
+import "./globals.scss"
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "PokeDB",
@@ -15,7 +20,11 @@ export default function RootLayout({
       <body
         className={`antialiased`}
       >
-        {children}
+        <AuthProvider>
+          <Header />
+          {children}
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );
