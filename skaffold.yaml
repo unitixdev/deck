@@ -1,12 +1,13 @@
 apiVersion: skaffold/v4beta11
 kind: Config
 metadata:
-  name: pokedb
+  name: deck
 deploy:
   helm:
     releases:
-      - name: pokedb
+      - name: deck
         namespace: pokedb
+        createNamespace: true
         chartPath: helm
         valuesFiles:
           - helm/values.yaml

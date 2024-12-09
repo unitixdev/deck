@@ -2,10 +2,12 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: pokedb
+  name: pokemon-db
 spec:
-  instances: 1
+  instances: 2
   primaryUpdateStrategy: unsupervised
 
   storage:
     size: 1Gi
+    storageClass: local-path
+---
