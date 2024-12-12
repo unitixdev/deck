@@ -6,7 +6,9 @@ load("@rules_rust//rust:defs.bzl", "rust_binary")
 rust_binary(
     name = "content-api",
     srcs = glob(["src/**/*.rs"]),
+    data = glob(["migrations/**/*.sql"]),
     edition = "2021",
+    proc_macro_deps = all_crate_deps(proc_macro = True),
     deps = all_crate_deps(normal = True),
 )
 

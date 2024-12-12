@@ -1,0 +1,4 @@
+DROP TABLE IF EXISTS collection_cards;
+DROP TABLE IF EXISTS cards;
+DROP TABLE IF EXISTS card_sets;
+DROP TABLE IF EXISTS collections;

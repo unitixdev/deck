@@ -11,6 +11,7 @@ bazel_dep(name = "rules_foreign_cc", version = "0.10.1")
 bazel_dep(name = "protobuf", version = "27.1", repo_name = "com_google_protobuf")
 bazel_dep(name = "toolchains_llvm", version = "1.2.0")
 bazel_dep(name = "chrome-linux-sysroot", version = "0.0.1")
+bazel_dep(name = "libpq", version = "0.0.1")
 
 llvm = use_extension("@toolchains_llvm//toolchain/extensions:llvm.bzl", "llvm")
 llvm.toolchain(
@@ -64,6 +65,18 @@ crate.from_cargo(
 )
 
 use_repo(crate, "crates")
+
+crate.annotation(
+    crate = "pq-sys",
+    build_script_env = {
+        "PQ_LIB_STATIC": "1",
+    },
+    rustc_flags = [
+        "-L",
+        "$(BINDIR)/external/libpq~~_repo_rules~postgres",
+    ],
+    data = ["@@libpq~~_repo_rules~postgres//:libpq"],
+)
 
 register_toolchains(
     "@rust_toolchains//:all",
