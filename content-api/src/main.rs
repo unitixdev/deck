@@ -1,6 +1,7 @@
+use clap::Parser;
 use std::{collections::HashMap, ops::Deref};
 
-use clap::Parser;
+pub mod store;
 
 #[derive(Parser)]
 pub struct Opts {
@@ -22,8 +23,5 @@ async fn main() {
 
     let client = reqwest::Client::new();
 
-
     println!("Hello, world!");
 }
-
-
